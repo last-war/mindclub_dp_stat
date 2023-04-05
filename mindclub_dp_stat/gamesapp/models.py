@@ -3,6 +3,7 @@ from django.db import models
 
 class Command(models.Model):
     name = models.CharField(min_lengt=3, null=False)
+# quiz_id?
 
     def __str__(self):
         return f'{self.name}'
@@ -11,20 +12,25 @@ class Command(models.Model):
 class Quiz(models.Model):
     date = models.DateField()
     name = models.CharField(min_lengt=3, null=False)
+    number_tour = models.IntegerField()
+    #number_command?
 
     def __str__(self):
         return f'{self.name} at {self.date}'
 
 
 class Tour(models.Model):
-    command = models.ForeignKey(Command, on_delete=models.CASCADE())
+    number_question = models.IntegerField()
+    total_result = models.FloatField()
     question = models.IntegerField()
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE())
-    result = models.FloatField()
 
 
 class Result(models.Model):
-    pass
+    command = models.ForeignKey(Command, on_delete=models.CASCADE())
+    point = models.FloatField()
+    question_number = models.IntegerField()
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE())
 
 
 class Player(models.Model):
