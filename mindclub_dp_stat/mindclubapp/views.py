@@ -25,10 +25,11 @@ def season(request):
     if request.method == 'POST':
         form = SeasonForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_season = Season()
+            new_season.name = request.POST.get('name')
+            new_season.game_type = GameType.objects.get(name=request.POST.get('gametype'))
+            new_season.save()
             return redirect(to='mindclubapp:main')
         else:
-            return render(request, 'mindclubapp/season.html', {'form': form})
-
-    return render(request, 'mindclubapp/season.html', {'form': SeasonForm()})
-
+            return render(request, 'mindclubapp/season.html', {'form': form, 'gametypes': gametypes})
+    return render(request, 'mindclubapp/season.html', {'form': SeasonForm(), 'gametypes': gametypes})

@@ -3,7 +3,7 @@ from .models import Season, GameType
 
 
 class GameTypeForm(ModelForm):
-    name = CharField(min_length=0, max_length=50, required=True, widget=TextInput())
+    name = CharField(max_length=50, required=True, widget=TextInput())
 
     class Meta:
         model = GameType
@@ -11,9 +11,10 @@ class GameTypeForm(ModelForm):
 
 
 class SeasonForm(ModelForm):
-    name = CharField(min_length=0, max_length=50, required=True, widget=TextInput())
-    game_type = CharField(min_length=0, max_length=50, widget=TextInput())
+    name = CharField(max_length=50, required=True, widget=TextInput())
+    game_type = CharField(max_length=50, required=True, widget=TextInput())
 
     class Meta:
         model = Season
-        fields = ['name', 'game_type']
+        fields = ['name']
+        exclude = ['game_type']
