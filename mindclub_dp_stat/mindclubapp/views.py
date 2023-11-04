@@ -31,5 +31,6 @@ def season(request):
             new_season.save()
             return redirect(to='mindclubapp:main')
         else:
+            print(form.errors)
             return render(request, 'mindclubapp/season.html', {'form': form, 'gametypes': gametypes})
     return render(request, 'mindclubapp/season.html', {'form': SeasonForm(), 'gametypes': gametypes})

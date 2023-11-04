@@ -23,6 +23,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
+              {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Add new
@@ -31,6 +32,18 @@
                 <li><a class="dropdown-item" href="{% url 'mindclubapp:gametype' %}">Game type</a></li>
                 <li><a class="dropdown-item" href="{% url 'mindclubapp:season' %}">Season</a></li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <ul>
+                <li>Welcome <b>{{ user.username }}!</b></li>
+                <li><a href="{% url 'users:logout' %}" role="button">Logout</a></li>
+              </ul>
+                {% else %}
+              <ul>
+                <li><a href="{% url 'users:signup' %}" role="button">Sign Up</a></li>
+                <li><a href="{% url 'users:login' %}" role="button">Login</a></li>
+              </ul>
+                {% endif %}
             </li>
           </ul>
         </div>

@@ -12,9 +12,8 @@ class GameTypeForm(ModelForm):
 
 class SeasonForm(ModelForm):
     name = CharField(max_length=50, required=True, widget=TextInput())
-    game_type = CharField(max_length=50, required=True, widget=TextInput())
+    gametype = CharField(max_length=50, required=True, widget=TextInput())
 
     class Meta:
         model = Season
-        fields = ['name']
-        exclude = ['game_type']
+        fields = ['name', 'gametype']

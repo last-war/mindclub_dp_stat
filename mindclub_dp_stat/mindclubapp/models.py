@@ -8,7 +8,7 @@ class GameType(models.Model):
 
 class Season(models.Model):
     name = models.CharField(null=False)
-    game_type = models.ForeignKey(GameType, on_delete=models.CASCADE)
+    gametype = models.ForeignKey(GameType, on_delete=models.CASCADE)
 
 
 class Quiz(models.Model):
@@ -16,7 +16,7 @@ class Quiz(models.Model):
     name = models.CharField(null=False)
     number_tour = models.IntegerField()
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
-    game_type = models.ForeignKey(GameType, on_delete=models.CASCADE)
+    gametype = models.ForeignKey(GameType, on_delete=models.CASCADE)
     description = models.TextField()
     max_command = models.IntegerField()
     total_result = models.FloatField()
