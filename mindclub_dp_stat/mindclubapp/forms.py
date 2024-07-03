@@ -16,4 +16,5 @@ class SeasonForm(ModelForm):
 
     class Meta:
         model = Season
-        fields = ['name', 'gametype']
+        fields = ['name']
+        exclude = ['gametype']

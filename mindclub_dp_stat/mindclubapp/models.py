@@ -10,6 +10,9 @@ class Season(models.Model):
     name = models.CharField(null=False)
     gametype = models.ForeignKey(GameType, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.gametype} з {self.name}'
+
 
 class Quiz(models.Model):
     date = models.DateField()
